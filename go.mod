@@ -1,3 +1,3 @@
-module github.com/808BiTT/options
+module options
 
 go 1.21.1
