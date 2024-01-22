@@ -26,12 +26,12 @@ func (o Option[T]) IsNone() bool {
 	return o.value == nil
 }
 
-func (o Option[T]) Get() T {
+func (o Option[T]) Get() (T, error) {
 	if o.IsNone() {
 		var zero T
-		return zero
+		return zero, ErrNoValue
 	}
-	return *o.value
+	return *o.value, nil
 }
 
 func (o Option[T]) OrElse(defaultValue T) T {
@@ -39,11 +39,4 @@ func (o Option[T]) OrElse(defaultValue T) T {
 		return *o.value
 	}
 	return defaultValue
-}
-
-func (o Option[T]) Value() T {
-	if o.IsNone() {
-		panic(ErrNoValue)
-	}
-	return *o.value
 }
