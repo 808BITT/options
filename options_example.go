@@ -16,7 +16,7 @@ func main() {
 	if text.IsError() {
 		fmt.Println(text.Error())
 	}
-	fmt.Println(string(text.OrElse("File is Empty")))
+	fmt.Println(text.OrElse("File is Empty"))
 
 }
 
